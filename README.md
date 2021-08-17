@@ -9,5 +9,4 @@
 * Users can change their city to a different one from a list of states/cities to browse posts from other areas.
 * Posts are ordered by date (newest first) and expire after 48 hours.
 * Users can communicate by posting comments to any post.
-* *Optional: Design a notification system to notify post owner and commenters when any comment is posted (2 extra points added to your final course grade).*
       
