@@ -1,0 +1,36 @@
+<div style="  position: fixed;
+top: 50%;
+left: 50%;
+margin-top: -50px;
+margin-left: -100px;">
+  <form
+    style="
+      border-style: solid;
+      border-width: 2px;
+      width: 250px;
+      height: 160px;
+      text-align: center;
+      background: #d0dfff;
+    "
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+  <br>
+    <label
+      >Email:<br />
+      <input type="text" name="email" formControlName="email" />
+    </label>
+    <br />
+    <label
+      >Password:<br />
+      <input type="password" name="password" formControlName="password" />
+    </label>
+    <br />
+    <br />
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button style="margin-left: 5px" type="button" (click)="onSignUp()">
+      Sign-Up
+    </button>
+    <br>
+  </form>
+</div>

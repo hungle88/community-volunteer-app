@@ -1,0 +1,17 @@
+<div style="margin-left: 10px">
+  <br />
+  <mat-card-title
+    style="border-style: dashed; border-width: 1px; margin-left: 10px"
+  >
+    Edit Comment Form
+  </mat-card-title>
+  <br />
+  <br />
+  <form [formGroup]="editCommentForm" (ngSubmit)="onSubmit()">
+    <label> Comment Content </label> <br />
+
+    <textarea rows="8" cols="60" formControlName="commentContent"></textarea>
+    <br />
+    <button type="submit" [disabled]="!editCommentForm.valid">Save</button>
+  </form>
+</div>

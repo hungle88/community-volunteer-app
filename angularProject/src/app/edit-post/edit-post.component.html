@@ -1,0 +1,8 @@
+<form [formGroup]='editPostForm' (ngSubmit)="onSubmit()">
+  <label>
+    Edit post:
+    <textarea rows="8" cols="60" formControlName='content'></textarea>
+  </label>
+  <br>
+  <button type="submit" [disabled]="!editPostForm.valid">Edit post</button>
+</form>

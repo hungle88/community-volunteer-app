@@ -1,0 +1,50 @@
+<br />
+<div style="margin-left: 10px">
+  <mat-card-title style="border-style: dashed; border-width: 1px">
+    New Post Form </mat-card-title
+  ><br />
+  <br />
+
+  <form [formGroup]="addPostForm" (ngSubmit)="onSubmit()">
+    <label>
+      Type:
+      <input
+        type="radio"
+        id="help"
+        value="Help Requests"
+        formControlName="type"
+      />
+      <label for="help">Help Requests</label>
+      <input
+        type="radio"
+        id="service"
+        value="Service Providers"
+        formControlName="type"
+      />
+      <label for="service">Service Providers</label>
+    </label>
+    <br />
+    <label>
+      Content: <br />
+      <textarea rows="8" cols="60" formControlName="content"></textarea>
+    </label>
+    <br />
+    <label>
+      City: <br />
+      <input type="text" name="city" formControlName="city" />
+    </label>
+    <br />
+    <label>
+      State: <br />
+      <input type="text" name="state" formControlName="state" />
+    </label>
+    <br />
+    <button
+      style="margin-left: 5px; margin-top: 10px; margin-bottom: 5px"
+      type="submit"
+      [disabled]="!addPostForm.valid"
+    >
+      Add new post
+    </button>
+  </form>
+</div>

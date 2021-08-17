@@ -1,0 +1,60 @@
+<br />
+<mat-card-title style="border-style: dashed; border-width: 1px; margin-left: 10px;">
+  Sign-Up Form
+</mat-card-title>
+<br />
+<br />
+
+<form style="margin-left: 10px;" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <label
+    >Full name: <br />
+
+    <input type="string" name="fullname" formControlName="fullname" />
+  </label>
+  <br />
+  <label
+    >Email: <br />
+
+    <input type="string" name="email" formControlName="email" />
+  </label>
+  <br />
+  <label
+    >Password: <br />
+
+    <input type="password" name="password" formControlName="password" />
+  </label>
+  <br />
+  <label
+    >Address: <br />
+
+    <input type="string" name="address" formControlName="address" />
+  </label>
+  <br />
+  <label
+    >City: <br />
+
+    <input type="string" name="city" formControlName="city" />
+  </label>
+  <br />
+  <label
+    >State: <br />
+
+    <input type="string" name="state" formControlName="state" />
+  </label>
+  <br />
+  <label
+    >ZIP Code: <br />
+
+    <input type="string" name="zipcode" formControlName="zipcode" />
+  </label>
+  <br />
+  <label
+    >Phone: <br />
+
+    <input type="string" name="phone" formControlName="phone" />
+  </label>
+  <br />
+  <br />
+  <button type="submit" [disabled]="!signupForm.valid">Submit</button>  <button style="margin-left: 5px;" type="button" (click)="onGoBack()" >Back</button>
+
+</form>

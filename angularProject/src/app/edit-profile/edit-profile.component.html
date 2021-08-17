@@ -1,0 +1,61 @@
+<br />
+<mat-card-title
+  style="border-style: dashed; border-width: 1px; margin-left: 10px"
+>
+  Edit My Profile
+</mat-card-title>
+<br>
+<br>
+<form
+  style="margin-left: 10px"
+  [formGroup]="editProfileForm"
+  (ngSubmit)="onSubmit()"
+>
+  <label>
+    Fullname: <br />
+    <input type="text" name="fullname" formControlName="fullname" />
+  </label>
+  <br />
+  <label>
+    Email: <br />
+    <input type="text" name="email" formControlName="email" />
+  </label>
+  <br />
+  <label>
+    Password: <br />
+    <input type="password" name="password" formControlName="password" />
+  </label>
+  <br />
+  <label>
+    Address: <br />
+    <input type="text" name="address" formControlName="address" />
+  </label>
+  <br />
+  <label>
+    City: <br />
+    <input type="text" name="city" formControlName="city" />
+  </label>
+  <br />
+  <label>
+    State:<br />
+    <input type="text" name="state" formControlName="state" />
+  </label>
+  <br />
+  <label>
+    Zipcode:<br />
+    <input type="text" name="zipcode" formControlName="zipcode" />
+  </label>
+  <br />
+  <label>
+    Phone:<br />
+    <input type="text" name="phone" formControlName="phone" />
+  </label>
+  <br />
+  <button
+    style="margin-left: 5px; margin-top: 10px; margin-bottom: 5px"
+    type="submit"
+    [disabled]="!editProfileForm.valid"
+  >
+    Edit profile
+  </button>
+</form>
