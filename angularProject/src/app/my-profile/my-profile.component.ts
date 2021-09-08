@@ -44,7 +44,6 @@ import { MainServiceService } from '../main-service.service';
   styles: [],
 })
 export class MyProfileComponent implements OnInit {
-  // id: any = localStorage._id
   id: any = localStorage.userId;
   isNof = localStorage.isNof;
 
@@ -54,8 +53,6 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
     this.main.getUserDetail(this.id).subscribe((res) => {
       this.userInfo = res;
-      // console.log(this.userInfo);
-      // console.log(res);
     });
   }
 

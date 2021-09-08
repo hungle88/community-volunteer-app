@@ -43,6 +43,7 @@ export class AddPostComponent {
   }
 
   onSubmit(): void {
+    //capitalize fullname, city and state
     this.addPostForm.value.fullname = this.main.capitalization(
       this.addPostForm.value.fullname
     );

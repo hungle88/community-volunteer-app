@@ -1,3 +1,5 @@
+//test global store
+
 export const EDIT_USER = 'EDIT_USER';
 export const GET_REQUEST_LIST = 'GET_REQUEST_LIST';
 export const GET_PROVIDER_LIST = 'GET_PROVIDER_LIST';

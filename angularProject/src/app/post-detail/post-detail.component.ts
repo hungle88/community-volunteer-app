@@ -67,7 +67,6 @@ import { Location } from '@angular/common';
       </button>
 
       <ul>
-        <!-- <div *ngIf="postContent[0]"> -->
           <div *ngFor="let comment of postContent[0]?.comments " >
             <li>
               {{ comment?.createdAt | date: 'medium' }} <br />
@@ -92,7 +91,6 @@ import { Location } from '@angular/common';
               <br />
             </li>
           </div>
-        <!-- </div> -->
       </ul>
       <div></div>
     </div>
@@ -119,18 +117,16 @@ export class PostDetailComponent implements OnInit {
     this.subscription = activatedRoute.paramMap.subscribe(
       ({ params }: any) => (this.id = params['id'])
     );
-    // console.log(this.postContent[0].ownerId)
   }
 
   ngOnInit(): void {
     this.main.getPostDetail(this.id).subscribe((res) => {
       this.postContent = res;
 
-      // console.log(res);
     });
 
     // update checkin clear notification function
-    // will update post and comment's check-in time to the current time
+    // update post and comment's check-in time to the current time
 
     setTimeout(() => {
 

@@ -39,9 +39,8 @@ export class LoginComponent {
         localStorage.setItem('state', response.state);
         localStorage.setItem('userFullname', response.userFullname);
         localStorage.setItem('userId', response.userId);
-        // window.location.reload();
       }
-      // if no, show invalid login status
+      // if toke is invalid, show invalid login status
       else {
         alert(response.status);
       }

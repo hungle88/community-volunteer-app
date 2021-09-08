@@ -23,13 +23,12 @@ import { MainServiceService } from '../main-service.service';
 export class UserDetailComponent implements OnInit {
   subscription: Subscription;
   id: any;
-  // temp: any;
   userInfo: any = [];
   constructor(
     private main: MainServiceService,
     private activatedRoute: ActivatedRoute
   ) {
-    this.subscription = activatedRoute.paramMap.subscribe(
+    this.subscription = this.activatedRoute.paramMap.subscribe(
       ({ params }: any) => (this.id = params['id'])
     );
   }
@@ -37,10 +36,6 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     this.main.getUserDetail(this.id).subscribe((res) => {
       this.userInfo = res;
-
-      // console.log(res);
-
-      // console.log('userinfo', this.temp);
     });
   }
 }

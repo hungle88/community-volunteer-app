@@ -16,7 +16,6 @@ import { MainServiceService } from '../main-service.service';
         <div *ngFor="let post of filterNofList">
           <li>
             <div *ngIf="post.notification == true">
-              <!-- <p [ngStyle]="{ color: 'red' }">This post has new comment</p> -->
               Created Date: {{ post.createdAt | date: 'medium' }} <br />
               Type: {{ post.type }} <br />
               Fullname: {{ post.fullname }}
@@ -56,16 +55,14 @@ export class NotificationComponent implements OnInit {
   page = 1;
   constructor(private main: MainServiceService, private router: Router) {
     this.subsciption = this.main.getFollowPost(this.page).subscribe((res) => {
-      // console.log(res);
       if (Array.isArray(res)) {
         this.followList = res;
       }
-      // console.log('followList', this.followList);
     });
   }
 
   ngOnInit(): void {
-    //notification
+    //display notification
     setTimeout(() => {
       this.followList = this.main.getNof(this.followList);
       this.filterNofList = this.followList.filter(
@@ -73,9 +70,7 @@ export class NotificationComponent implements OnInit {
       );
 
       if (!this.filterNofList || this.filterNofList.length == 0) {
-        // this.router.navigate(['/requests'])
         localStorage.setItem('isNof', 'no');
-        // window.location.reload();
       } else {
         localStorage.setItem('isNof', 'yes');
       }

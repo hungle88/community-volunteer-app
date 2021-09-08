@@ -33,7 +33,6 @@ import { store } from '../store/store';
         <div *ngFor="let request of requestList">
           <li>
             <div *ngIf="request.notification == true; else content">
-              <!-- <p [ngStyle]="{ color: 'red' }">This post has new comment</p> -->
               Created Date: {{ request.createdAt | date: 'medium' }}
               <br />
               Fullname: {{ request.fullname }}
@@ -103,35 +102,29 @@ export class RequestListComponent implements OnInit {
       .getRequestList(this.state, this.city, this.page)
       .subscribe((res) => {
         store.dispatch({ type: 'GET_REQUEST_LIST', payload: res });
-        // console.log(res);
         if (Array.isArray(res)) {
           this.requestList = res;
           this.globalRequestList = store.getState().requestList;
         }
-        // console.log('provideList', this.requestList);
-        // console.log('global', this.globalRequestList);
       });
   }
 
   ngOnInit(): void {
-    //notification
+    //check for notification
 
     setTimeout(() => {
       this.requestList = this.main.getNof(this.requestList);
-      // console.log(this.requestList);
     }, 200);
   }
 
+  //Pagination
   nextPage() {
     this.page++;
     this.main
       .getRequestList(this.state, this.city, this.page)
       .subscribe((res: any) => {
         store.dispatch({ type: 'GET_REQUEST_LIST', payload: res });
-        // console.log(res);
 
-        // this.provideList = res;
-        // this.globalProvideList = store.getState().providerList;
         if (res.status == 'max') {
           this.page--;
         } else if (Array.isArray(res)) {
@@ -150,7 +143,6 @@ export class RequestListComponent implements OnInit {
       .getRequestList(this.state, this.city, this.page)
       .subscribe((res: any) => {
         store.dispatch({ type: 'GET_PROVIDER_LIST', payload: res });
-        // console.log(res);
         if (Array.isArray(res)) {
           this.requestList = res;
           this.globalRequestList = store.getState().providerList;

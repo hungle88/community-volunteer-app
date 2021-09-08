@@ -5,7 +5,6 @@ import { MainServiceService } from './main-service.service';
 @Component({
   selector: 'app-root',
   template: `
-  
     <div [ngStyle]="{ background: '#d0dfff', height: '40px' }">
       <h1>
         Community Volunteer Activities
@@ -22,11 +21,8 @@ import { MainServiceService } from './main-service.service';
     <br />
     <br />
     <br />
-<div *ngIf="currentUser != undefined">
-    Hello, {{currentUser}}!
-</div>
+    <div *ngIf="currentUser != undefined">Hello, {{ currentUser }}!</div>
     <div [ngStyle]="{ background: '#86abf9', height: '80px' }">
-      <!-- <hr /> -->
       <br />
 
       <a style="margin-left: 10px;" [routerLink]="['/', 'requests']"
@@ -63,11 +59,7 @@ import { MainServiceService } from './main-service.service';
 
       <div [ngStyle]="{ float: 'right' }">
         City:
-        <input
-          [value]="''"
-          (input)="areaState.city = city.value"
-          #city
-        />
+        <input [value]="''" (input)="areaState.city = city.value" #city />
         State:
         <input
           [value]="''"
@@ -82,17 +74,16 @@ import { MainServiceService } from './main-service.service';
           Change Area
         </button>
         <span *ngIf="currentUser">
-        <button
-          mat-raised-button
-          color="primary"
-          style="margin-left: 10px; margin-right: 10px"
-          (click)="logout()"
-        >
-          Logout
-        </button>
-</span>
+          <button
+            mat-raised-button
+            color="primary"
+            style="margin-left: 10px; margin-right: 10px"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+        </span>
       </div>
-      <!-- <hr /> -->
     </div>
 
     <router-outlet></router-outlet>
@@ -103,7 +94,6 @@ export class AppComponent {
   areaState: any;
   title = 'angularProject';
   isNof = localStorage.isNof;
-  // isNof=true
   currentUser = localStorage.userFullname;
   constructor(private main: MainServiceService, private router: Router) {
     this.areaState = { city: localStorage.city, state: localStorage.state };
@@ -112,22 +102,22 @@ export class AppComponent {
       this.router.navigate(['/login']);
     }
   }
-  changeArea() {
-    // console.log(this.areaState);
-if(localStorage.token){
-    this.areaState.city = this.main.capitalization(this.areaState.city);
-    this.areaState.state = this.main.capitalization(this.areaState.state);
 
-    localStorage.setItem('city', this.areaState.city);
-    localStorage.setItem('state', this.areaState.state);
-    window.location.reload();
-}
+  //switch to a different location
+  changeArea() {
+    if (localStorage.token) {
+      this.areaState.city = this.main.capitalization(this.areaState.city);
+      this.areaState.state = this.main.capitalization(this.areaState.state);
+
+      localStorage.setItem('city', this.areaState.city);
+      localStorage.setItem('state', this.areaState.state);
+      window.location.reload();
+    }
   }
 
   logout() {
-
     localStorage.clear();
-    this.router.navigate(['/login'])
-    window.location.reload()
+    this.router.navigate(['/login']);
+    window.location.reload();
   }
 }

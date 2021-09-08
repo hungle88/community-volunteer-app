@@ -17,7 +17,6 @@ export class EditPostComponent {
 
     if (this.router.getCurrentNavigation()!.extras.state) {
       this.postContent = this.router.getCurrentNavigation()!.extras.state!.postContent;
-      // console.log(this.postContent);
 
       this.editPostForm = fb.group({
         'content': [this.postContent[0].content, Validators.required],
@@ -35,7 +34,6 @@ export class EditPostComponent {
   }
 
   onSubmit(): void {
-    // console.log(this.postContent[0]._id)
     this.main.editPost(this.editPostForm.value, this.postContent[0]._id).subscribe((response: any) => {
       alert(response.status)
       // this.router.navigate(['/requests'])

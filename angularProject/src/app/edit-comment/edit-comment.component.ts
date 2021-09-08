@@ -27,7 +27,6 @@ export class EditCommentComponent {
     if (this.router.getCurrentNavigation()!.extras.state) {
       this.commentContent =
         this.router.getCurrentNavigation()!.extras.state!.commentContent;
-      // console.log(this.commentContent.postId);
       this.postId = this.commentContent.postId;
 
       this.editCommentForm = fb.group({
@@ -44,8 +43,6 @@ export class EditCommentComponent {
   }
 
   onSubmit(): void {
-    // console.log(this.commentContent.postId);
-    // console.log(this.editCommentForm.value);
     this.main
       .editComment(
         this.editCommentForm.value,
@@ -55,7 +52,7 @@ export class EditCommentComponent {
       .subscribe((response: any) => {
         alert(response.status);
         // this.router.navigate(['/requests']);
-        this.location.back()
+        this.location.back();
       });
   }
 }

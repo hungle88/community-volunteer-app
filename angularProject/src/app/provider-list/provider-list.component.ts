@@ -33,7 +33,6 @@ import { store } from '../store/store';
         <div *ngFor="let provider of provideList">
           <li>
             <div *ngIf="provider.notification == true; else content">
-              <!-- <p [ngStyle]="{ color: 'red' }">This post has new comment</p> -->
               Created Date: {{ provider.createdAt | date: 'medium' }}
               <br />
               Fullname: {{ provider.fullname }}
@@ -104,34 +103,30 @@ export class ProviderListComponent implements OnInit {
       .getProviderList(this.state, this.city, this.page)
       .subscribe((res) => {
         store.dispatch({ type: 'GET_PROVIDER_LIST', payload: res });
-        // console.log(res);
         if (Array.isArray(res)) {
           this.provideList = res;
           this.globalProvideList = store.getState().providerList;
         }
-        // console.log('provideList', this.provideList);
-        // console.log('global', this.globalProvideList);
+ 
       });
   }
 
   ngOnInit(): void {
-    //notification
+    //check for notification
 
     setTimeout(() => {
       this.provideList = this.main.getNof(this.provideList);
     }, 200);
   }
 
+  //pagination
   nextPage() {
     this.page++;
     this.main
       .getProviderList(this.state, this.city, this.page)
       .subscribe((res: any) => {
         store.dispatch({ type: 'GET_PROVIDER_LIST', payload: res });
-        // console.log(res);
 
-        // this.provideList = res;
-        // this.globalProvideList = store.getState().providerList;
         if (res.status == 'max') {
           this.page--;
         } else if (Array.isArray(res)) {
@@ -150,7 +145,6 @@ export class ProviderListComponent implements OnInit {
       .getProviderList(this.state, this.city, this.page)
       .subscribe((res: any) => {
         store.dispatch({ type: 'GET_PROVIDER_LIST', payload: res });
-        // console.log(res);
         if (Array.isArray(res)) {
           this.provideList = res;
           this.globalProvideList = store.getState().providerList;

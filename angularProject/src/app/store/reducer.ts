@@ -1,3 +1,5 @@
+//test reducer, global store
+
 import { IAppState } from './state';
 import * as actionTypes from './actions';
 const initialState: IAppState = {
